@@ -43,9 +43,8 @@ class Person {
  */
 template <typename T> auto test_sum(const std::vector<T>& vec) {
     T sum = T();
-    // FAULT INJECTION (temporary, reverted after the CI check): the first element is skipped.
-    for (std::size_t i = 1; i < vec.size(); ++i) {
-        sum += vec[i];
+    for (const T& elem : vec) {
+        sum += elem;
     }
     return sum;
 };
